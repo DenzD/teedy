@@ -22,3 +22,19 @@ def upload() {
                             useWorkspaceInPromotion: false, 
                             verbose: false)])
 }
+
+def dwn_nexus() {
+    withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
+                sh 'docker login -u biba -p $password ${registry}'
+                }
+                sh "docker pull ${params.url}"
+                sh 'docker logout ${registry}'
+}
+
+def dev() {
+
+}
+
+def prod() {
+
+}
