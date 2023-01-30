@@ -32,9 +32,11 @@ def dwn_nexus() {
 }
 
 def dev() {
-
+    sh 'docker stop web'
+    sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
 }
 
 def prod() {
-
+    sh 'docker stop web'
+    sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
 }
