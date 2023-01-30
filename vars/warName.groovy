@@ -7,5 +7,5 @@ def call(String name = 'human') {
 
 def hi() {
     println("Hello World!")
-    sh ("curl -u $MY_CREDS_USR:$MY_CREDS_PSW ${params.url} --output docs-web-1.10.war")
+    sh ("curl -u $MY_CREDS_USR:$MY_CREDS_PSW ${x} --output docs-web-1.10.war")
 }
