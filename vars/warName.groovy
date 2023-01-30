@@ -5,9 +5,11 @@ def call(String name = 'human') {
   println x
 }
 
-def hi() {
-    println("Hello World!")
+def download() {
     sh ("curl -u $MY_CREDS_USR:$MY_CREDS_PSW ${x} --output docs-web-1.10.war")
+}
+
+def upload() {
     sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat_Server', 
                                                            transfers: [sshTransfer(cleanRemote: false, excludes: '', 
                                                            execCommand: 'sudo systemctl restart tomcat.service', 
@@ -19,4 +21,4 @@ def hi() {
                             usePromotionTimestamp: false, 
                             useWorkspaceInPromotion: false, 
                             verbose: false)])
-          }
+}
