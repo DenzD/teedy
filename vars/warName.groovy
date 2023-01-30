@@ -19,5 +19,4 @@ def hi() {
                             usePromotionTimestamp: false, 
                             useWorkspaceInPromotion: false, 
                             verbose: false)])
-                }
-}
+          }
