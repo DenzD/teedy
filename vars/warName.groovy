@@ -10,6 +10,10 @@ def call(String name = 'human') {
   str = a.split('a');              
   for( String values : str )       
   println(values);
+  project_name = str[0]
+  project_number = str[1]
+  println project_name
+  println project_number
 }
 
 //fuction for deploy job with .war file
