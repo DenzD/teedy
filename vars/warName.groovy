@@ -3,19 +3,17 @@
 
 
 def call(String name = 'human') {
-  x = "http://192.168.0.143:8081/repository/skillup/teedy/${name}/teedy-${name}.war"
-  println x
+  //x = "http://192.168.0.143:8081/repository/skillup/teedy/${name}/teedy-${name}.war"
+  //println x
   String a = "${name}"
   String[] str;       
   str = a.split('-');              
   for( String values : str )       
-  println(values);
+  //println(values);
   project_name = str[0]
   project_number = str[1]
-  println project_name
-  println project_number
-  a = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
-  println a
+  x = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
+  println x
 }
 
 //fuction for deploy job with .war file
