@@ -7,7 +7,7 @@ def call(String name = 'human') {
   println x
   String a = "${name}"
   String[] str;       
-  str = a.split('a');              
+  str = a.split('-');              
   for( String values : str )       
   println(values);
   project_name = str[0]
