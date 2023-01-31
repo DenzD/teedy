@@ -5,11 +5,9 @@ def call(String name = 'human') {
   println x
 }
 
-def download() {
+//fuction for deploy job with .war file
+def deploy_war() {
     sh ("curl -u $MY_CREDS_USR:$MY_CREDS_PSW ${x} --output docs-web-1.10.war")
-}
-
-def upload() {
     sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat_Server', 
                                                            transfers: [sshTransfer(cleanRemote: false, excludes: '', 
                                                            execCommand: 'sudo systemctl restart tomcat.service', 
@@ -21,7 +19,7 @@ def upload() {
                             usePromotionTimestamp: false, 
                             useWorkspaceInPromotion: false, 
                             verbose: false)])
-}
+} 
 
 def dwn_nexus() {
     withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
