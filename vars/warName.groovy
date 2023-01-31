@@ -14,7 +14,7 @@ def call(String name = 'human') {
   project_number = str[1]
   println project_name
   println project_number
-  a = "http://192.168.0.143:8081/repository/skillup/teedy/${project_name}/${name}.war"
+  a = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
   println a
 }
 
