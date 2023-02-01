@@ -40,20 +40,11 @@ def dwn_nexus() {
                 sh 'docker logout ${registry}'
                 
                 if (params.ENVIRONMENT == 'Dev') {
-                          echo "ENV is DEV"
+                                                  sh 'docker stop web'
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
                 }
                 else if (params.ENVIRONMENT == 'Prod') {
-                          echo "ENV is PROD"
-                          
+                                                  sh 'docker stop web'
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")           
                 }
-}
-
-def dev() {
-    sh 'docker stop web'
-    sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
-}
-
-def prod() {
-    sh 'docker stop web'
-    sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
 }
