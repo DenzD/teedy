@@ -32,25 +32,20 @@ def deploy_war() {
                             verbose: false)])
 } 
 
-def test() {
-    when {
-          expression { 
-                     return params.ENVIRONMENT == 'Dev'
-          }
-    }
-              steps {
-                script{
-                      echo "Hello"
-                }
-            }
-}
-
 def dwn_nexus() {
     withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
                 sh 'docker login -u biba -p $password ${registry}'
                 }
                 sh "docker pull ${params.url}"
                 sh 'docker logout ${registry}'
+                
+                if (params.ENVIRONMENT == 'Dev') {
+                          echo "ENV is DEV"
+                }
+                else if (params.ENVIRONMENT == 'Prod') {
+                          echo "ENV is PROD"
+                          
+                }
 }
 
 def dev() {
