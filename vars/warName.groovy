@@ -48,7 +48,7 @@ properties([
                     script: """
                         import groovy.json.JsonSlurperClassic
                         //String a = "192.168.0.143:8085/teddy/web:254"
-                        String a = "{params.url}"
+                        String a = params.url
                         String[] str
                         str = a.split('teddy/web:')
                         for( String values : str )
