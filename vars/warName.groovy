@@ -34,6 +34,7 @@ def deploy_war() {
 
 
 def list_images() {
+  println "DEBUG: parameter isFoo = ${params.url}"
 properties([
     parameters([
         [$class: 'ChoiceParameter',
