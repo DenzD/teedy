@@ -44,7 +44,7 @@ properties([
             filterable: false,
             name: 'Images',
             script: [$class: 'GroovyScript',
-                     fallbackScript: [classpath: [], sandbox: false, script: 'return "${params.url}"'],
+                     fallbackScript: [classpath: [], sandbox: false, script: 'return ["Could not get images"]'],
                 script: [classpath: [], sandbox: false, 
                     script: """
                         import groovy.json.JsonSlurperClassic
