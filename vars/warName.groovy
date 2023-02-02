@@ -56,10 +56,9 @@ properties([
                         build_number  = str[1]
                         int number = build_number as Integer
                         project_name = "teddy"
-                        println name
                         def list = []
                         for(int i = number;i<number+9;i++) {
-                            list << registry_url+project_name+"/web:"+(i-9)
+                            list << registry_url+name+"/web:"+(i-9)
                         }
                         list << a
                         return list
