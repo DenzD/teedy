@@ -14,7 +14,6 @@ def call(String name = 'human') {
   project_number = str[1]
   x = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
   println x
-  name = "${project_name}"
 }
 
 //fuction for deploy job with .war file
@@ -48,6 +47,7 @@ properties([
                 script: [classpath: [], sandbox: false, 
                     script: """
                         import groovy.json.JsonSlurperClassic
+                        //String a = "192.168.0.143:8085/teddy/web:254"
                         String a = "192.168.0.143:8085/teddy/web:254"
                         String[] str
                         str = a.split('teddy/web:')
@@ -58,7 +58,7 @@ properties([
                         project_name = "teddy"
                         def list = []
                         for(int i = number;i<number+9;i++) {
-                            list << registry_url+name+"/web:"+(i-9)
+                            list << registry_url+project_name+"/web:"+(i-9)
                         }
                         list << a
                         return list
