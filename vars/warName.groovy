@@ -14,6 +14,7 @@ def call(String name = 'human') {
   project_number = str[1]
   x = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
   println x
+  name = "${project_name}"
 }
 
 //fuction for deploy job with .war file
@@ -55,6 +56,7 @@ properties([
                         build_number  = str[1]
                         int number = build_number as Integer
                         project_name = "teddy"
+                        println name
                         def list = []
                         for(int i = number;i<number+9;i++) {
                             list << registry_url+project_name+"/web:"+(i-9)
