@@ -34,7 +34,6 @@ def deploy_war() {
 
 
 def list_images() {
-  println "DEBUG: parameter isFoo = ${params.url}"
 properties([
     parameters([
         [$class: 'ChoiceParameter',
@@ -48,8 +47,6 @@ properties([
                 script: [classpath: [], sandbox: false, 
                     script: """
                         import groovy.json.JsonSlurperClassic
-                        //String a = "192.168.0.143:8085/teddy/web:254"
-                        println "DEBUG: parameter isFoo = ${params.url}"
                         String a = "${params.url}"
                         String[] str
                         str = a.split('teddy/web:')
