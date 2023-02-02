@@ -57,7 +57,7 @@ properties([
                         //project_name = "teddy"
                         def list = []
                         for(int i = number;i<number+9;i++) {
-                            list << registry_url+project_name+"/web:"+(i-9)
+                            list << registry_url+${project_name}+"/web:"+(i-9)
                         }
                         list << a
                         return list
