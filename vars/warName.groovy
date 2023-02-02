@@ -70,7 +70,7 @@ def dwn_nexus() {
     withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
                 sh 'docker login -u biba -p $password ${registry}'
                 }
-                sh "docker pull ${params.url}"
+                sh "docker pull ${params.Images}"
                 sh 'docker logout ${registry}'
                 
                 if (params.ENVIRONMENT == 'Dev') {
