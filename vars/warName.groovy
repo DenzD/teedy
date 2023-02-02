@@ -75,10 +75,10 @@ def dwn_nexus() {
                 
                 if (params.ENVIRONMENT == 'Dev') {
                                                   sh 'docker stop web'
-                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.Images}")
                 }
                 else if (params.ENVIRONMENT == 'Prod') {
                                                   sh 'docker stop web'
-                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")           
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.Images}")           
                 }
 }
