@@ -32,6 +32,40 @@ def deploy_war() {
                             verbose: false)])
 } 
 
+
+def list_images() {
+properties([
+    parameters([
+        [$class: 'ChoiceParameter',
+            choiceType: 'PT_SINGLE_SELECT',
+            description: 'Select a choice',
+            filterLength: 1,
+            filterable: false,
+            name: 'Images',
+            script: [$class: 'GroovyScript',
+                fallbackScript: [classpath: [], sandbox: false, script: 'return ["Could not get images"]'],
+                script: [classpath: [], sandbox: false, 
+                    script: """
+                        import groovy.json.JsonSlurperClassic
+                        String a = "192.168.0.143:8085/teddy/web:254"
+                        String[] str
+                        str = a.split('teddy/web:')
+                        for( String values : str )
+                        registry_url = str[0]
+                        build_number  = str[1]
+                        int number = build_number as Integer
+                        project_name = "teddy"
+                        def list = []
+                        for(int i = number;i<number+9;i++) {
+                            list << registry_url+project_name+"/web:"+(i-9)
+                        }
+                        list << a
+                        return list
+                    """
+                ]]]])
+])
+}
+
 def dwn_nexus() {
     withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
                 sh 'docker login -u biba -p $password ${registry}'
