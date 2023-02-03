@@ -70,15 +70,15 @@ def dwn_nexus() {
     withCredentials([usernamePassword(credentialsId: 'jenkins-nexus', passwordVariable: 'password', usernameVariable: 'user')]) {
                 sh 'docker login -u biba -p $password ${registry}'
                 }
-                sh "docker pull ${params.Images}"
+                sh "docker pull ${params.url}"
                 sh 'docker logout ${registry}'
                 
                 if (params.ENVIRONMENT == 'Dev') {
                                                   sh 'docker stop web'
-                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.Images}")
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")
                 }
                 else if (params.ENVIRONMENT == 'Prod') {
                                                   sh 'docker stop web'
-                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.Images}")           
+                                                  sh ("docker run -d --rm --name web -p 8080:8080 ${params.url}")           
                 }
 }
