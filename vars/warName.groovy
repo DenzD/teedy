@@ -14,6 +14,7 @@ def call(String name = 'human') {
   project_number = str[1]
   x = "http://192.168.0.143:8081/repository/skillup/${project_name}/${project_number}/${name}.war"
   println x
+  deploy_war()
 }
 
 //fuction for deploy job with .war file
